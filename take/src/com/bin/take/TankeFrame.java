@@ -34,29 +34,63 @@ public class TankeFrame extends Frame{
 	@Override
 	public void paint(Graphics g){
 		g.fillRect(x, y, 50, 50);
-		x+=10;
-		/*x+=10;
-		y+=10;*/
 		
 	
 	}
 	class MykeyListener extends KeyAdapter{
+		boolean bL=false;
+		boolean bU=false;
+		boolean bR=false;
+		boolean bD=false;
 
 		/* 
 		 * 一个键被按下去执行
 		 */
 		@Override
-		public void keyPressed(KeyEvent arg0) {
-		x+=200;
-		//repaint会默认调用paint
-		repaint();
+		public void keyPressed(KeyEvent e) {
+			//获取按键
+			int key =e.getKeyCode();
+			switch(key){
+			case KeyEvent.VK_LEFT:
+				bL=true;
+				break;
+			case KeyEvent.VK_UP:
+				bU=true;
+				break;
+			case KeyEvent.VK_RIGHT:
+				bR=true;
+				break;
+			case KeyEvent.VK_DOWN:
+				bD=true;
+				break;
+			default:
+				break;
+			}
+
 		}
 
 		/* 
 		 * 一个键被抬起时调用
 		 */
 		@Override
-		public void keyReleased(KeyEvent arg0) {
+		public void keyReleased(KeyEvent k) {
+			int key =k.getKeyCode();
+			switch(key){
+		case KeyEvent.VK_LEFT:
+			bL=false;
+			break;
+		case KeyEvent.VK_UP:
+			bU=false;
+			break;
+		case KeyEvent.VK_RIGHT:
+			bR=false;
+			break;
+		case KeyEvent.VK_DOWN:
+			bD=false;
+			break;
+		default:
+			break;
+		}
 		}
 		
 	}
