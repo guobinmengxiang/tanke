@@ -35,7 +35,8 @@ public class TankeFrame extends Frame{
 	public void paint(Graphics g){
 		g.fillRect(x, y, 50, 50);
 		x+=10;
-		y+=10;
+		/*x+=10;
+		y+=10;*/
 		
 	
 	}
@@ -46,7 +47,9 @@ public class TankeFrame extends Frame{
 		 */
 		@Override
 		public void keyPressed(KeyEvent arg0) {
-			
+		x+=200;
+		//repaint会默认调用paint
+		repaint();
 		}
 
 		/* 
