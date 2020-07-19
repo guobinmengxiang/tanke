@@ -2,6 +2,8 @@ package com.bin.take;
 
 import java.awt.Frame;
 import java.awt.Graphics;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -15,8 +17,8 @@ public class TankeFrame extends Frame{
 		  setTitle("tank");
 		  // 让窗口显示出来
 		  setVisible(true);
+		  this.addKeyListener(new MykeyListener());
 		  //写一个监听器，监视点击X，如果点击了，则退出
-		  
 		  addWindowListener(new WindowAdapter(){
 			  @Override
 			  public void windowClosing(WindowEvent e){
@@ -34,7 +36,26 @@ public class TankeFrame extends Frame{
 		g.fillRect(x, y, 50, 50);
 		x+=10;
 		y+=10;
-	}
+		
 	
+	}
+	class MykeyListener extends KeyAdapter{
+
+		/* 
+		 * 一个键被按下去执行
+		 */
+		@Override
+		public void keyPressed(KeyEvent arg0) {
+			
+		}
+
+		/* 
+		 * 一个键被抬起时调用
+		 */
+		@Override
+		public void keyReleased(KeyEvent arg0) {
+		}
+		
+	}
 
 }
