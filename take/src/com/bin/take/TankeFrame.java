@@ -6,7 +6,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class TankeFrame extends Frame{
-	
+	int x=200 ,y=200;
 	public TankeFrame(){
 		  setSize(800, 600);
 		  //把窗口固定，不允许拖拽改变大小
@@ -24,9 +24,16 @@ public class TankeFrame extends Frame{
 			  }
 		  });
 	}
+	
+	/* 一支画笔， 会被自动调用
+	 * 画了个黑方块，
+	 * 改变坐标，使其移动
+	 */
 	@Override
 	public void paint(Graphics g){
-		g.fillRect(200, 200, 50, 50);
+		g.fillRect(x, y, 50, 50);
+		x+=10;
+		y+=10;
 	}
 	
 
