@@ -8,7 +8,11 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class TankeFrame extends Frame{
-	int x=200 ,y=200;
+	int x=200 ,y=200; 
+	//坦克的初始方向
+	Dir dir =Dir.DOWN;
+	//坦克的速度
+	private static final int SPEED=10;
 	public TankeFrame(){
 		  setSize(800, 600);
 		  //把窗口固定，不允许拖拽改变大小
@@ -29,12 +33,27 @@ public class TankeFrame extends Frame{
 	
 	/* 一支画笔， 会被自动调用
 	 * 画了个黑方块，
-	 * 改变坐标，使其移动
+	 * 改变坐标，使其移动 
+	 * 根据按键进行移动
+	 * 
 	 */
 	@Override
 	public void paint(Graphics g){
 		g.fillRect(x, y, 50, 50);
-		
+		switch(dir){
+		case LEFT:
+			x-=SPEED;
+			break;
+		case UP:
+			y-=SPEED;
+			break;
+		case RIGHT:
+			x+=SPEED;
+			break;
+		case DOWN:
+			y+=SPEED;
+			break;
+		}
 	
 	}
 	class MykeyListener extends KeyAdapter{
@@ -66,7 +85,17 @@ public class TankeFrame extends Frame{
 			default:
 				break;
 			}
+setMainTankDir();
+		}
 
+		/**
+		 * 按键给方向赋值
+		 */
+		private void setMainTankDir() {
+		if(bL) dir =Dir.LEFT;
+		if(bU) dir =Dir.UP;
+		if(bR) dir =Dir.RIGHT;
+		if(bD) dir =Dir.DOWN;
 		}
 
 		/* 
@@ -91,6 +120,7 @@ public class TankeFrame extends Frame{
 		default:
 			break;
 		}
+			setMainTankDir();
 		}
 		
 	}
