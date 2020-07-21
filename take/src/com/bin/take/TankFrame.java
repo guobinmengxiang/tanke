@@ -84,6 +84,9 @@ public class TankFrame extends Frame {
 			setMainTankDir();
 		}
 
+		/* 
+		 *按键抬起来 
+		 */
 		@Override
 		public void keyReleased(KeyEvent e) {
 			int key = e.getKeyCode();
@@ -112,11 +115,15 @@ public class TankFrame extends Frame {
 		 * 根据按键给方向赋值
 		 */
 		private void setMainTankDir() {
+			if(!bL&&!bU&&!bR&&!bD) myTank.setMoving(false);
+			else{myTank.setMoving(true);
 			if(bL) myTank.setDir(Dir.LEFT);
 			if(bU) myTank.setDir(Dir.UP);
 			if(bR) myTank.setDir(Dir.RIGHT);
 			if(bD) myTank.setDir(Dir.DOWN);
 		}
+		}
+		
 		
 	}
 	
