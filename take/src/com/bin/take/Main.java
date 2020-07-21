@@ -2,7 +2,7 @@ package com.bin.take;
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
-          TankeFrame tf = new TankeFrame();
+          TankFrame tf = new TankFrame();
          
          while(true){
         	 Thread.sleep(50);
