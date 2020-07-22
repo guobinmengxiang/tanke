@@ -10,7 +10,7 @@ import java.awt.Graphics;
  */
 public class Bullet {
 	//速度
-	private static final int SPEED = 10;
+	private static final int SPEED = 1;
 	//长和宽
 	private static int WINTH = 30, HEIGHT = 30;
 	//位置

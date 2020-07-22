@@ -1,7 +1,9 @@
 package com.bin.take;
 
+import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -11,12 +13,13 @@ public class TankFrame extends Frame {
 	//初始化一个坦克
 	Tank myTank = new Tank(200, 200, Dir.DOWN);
 	Bullet b =new Bullet(200,200, Dir.DOWN);
+	static final int  GAME_WIDTH=800,GAME_HEIGHT=600;
 	/**
 	 * 画布
 	 */
 	public TankFrame() {
 		//画布大小
-		setSize(800, 600);
+		setSize(GAME_WIDTH, GAME_HEIGHT);
 		//把窗口固定，不允许拖拽改变大小
 		setResizable(false);
 		//title
@@ -34,6 +37,21 @@ public class TankFrame extends Frame {
 			}
 			
 		});
+	}
+	//用双缓冲解决闪烁问题
+	Image offScreenImage = null;
+	@Override
+	public void update(Graphics g) {
+		if(offScreenImage == null) {
+			offScreenImage = this.createImage(GAME_WIDTH, GAME_HEIGHT);
+		}
+		Graphics gOffScreen = offScreenImage.getGraphics();
+		Color c = gOffScreen.getColor();
+		gOffScreen.setColor(Color.BLACK);
+		gOffScreen.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+		gOffScreen.setColor(c);
+		paint(gOffScreen);
+		g.drawImage(offScreenImage, 0, 0, null);
 	}
 	/* 一支画笔， 会被自动调用
 	 * 画了个黑方块，
