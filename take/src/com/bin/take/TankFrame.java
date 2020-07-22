@@ -10,7 +10,7 @@ import java.awt.event.WindowEvent;
 public class TankFrame extends Frame {
 	//初始化一个坦克
 	Tank myTank = new Tank(200, 200, Dir.DOWN);
-	
+	Bullet b =new Bullet(200,200, Dir.DOWN);
 	/**
 	 * 画布
 	 */
@@ -46,7 +46,8 @@ public class TankFrame extends Frame {
 	public void paint(Graphics g) {
 		//坦克自己画自己
 		myTank.paint(g);
-		
+		//画炮弹
+		b.paint(g);
 	}
 	
 	
