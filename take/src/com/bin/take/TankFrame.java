@@ -8,12 +8,15 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TankFrame extends Frame {
 	//初始化一个坦克
-	Tank myTank = new Tank(200, 200, Dir.DOWN);
+	Tank myTank = new Tank(200, 200, Dir.DOWN, this);
 	Bullet b =new Bullet(200,200, Dir.DOWN);
 	static final int  GAME_WIDTH=800,GAME_HEIGHT=600;
+	List<Bullet> bullets = new ArrayList<>();
 	/**
 	 * 画布
 	 */
@@ -63,9 +66,11 @@ public class TankFrame extends Frame {
 	@Override
 	public void paint(Graphics g) {
 		//坦克自己画自己
-		myTank.paint(g);
-		//画炮弹
-		b.paint(g);
+		myTank.paint(g); 
+		//根据容器内子弹数量造子弹
+		for(Bullet b:bullets){
+			b.paint(g);
+		}
 	}
 	
 	
@@ -122,7 +127,8 @@ public class TankFrame extends Frame {
 			case KeyEvent.VK_DOWN:
 				bD = false;
 				break;
-
+			case KeyEvent.VK_CONTROL:
+				myTank.fire();
 			default:
 				break;
 			}
