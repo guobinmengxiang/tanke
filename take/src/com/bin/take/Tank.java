@@ -80,8 +80,12 @@ public class Tank {
 		}
 	}
 
+	/**
+	 * 开炮
+	 * 向集合中添加子弹
+	 */
 	public void fire() {
-		tf.bullets.add( new Bullet(this.x, this.y, this.dir));
+		tf.bullets.add( new Bullet(this.x, this.y, this.dir,this.tf));
 	}
 
 }
